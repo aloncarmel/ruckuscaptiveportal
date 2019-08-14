@@ -1,0 +1,111 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Captive">
+    <meta name="author" content="Captive portal">
+    <title>Your Captive portal.</title>
+
+        <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i|Playfair+Display:400,400i,700,700i,900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/shell.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="/js/javascript.js?6346628"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src='https://cdn.jsdelivr.net/lodash/4.17.2/lodash.min.js'></script>
+    <link ref="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.min.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+</head>
+  <body>
+<script type="text/javascript">
+function get_param(name)
+{
+    if (location.href.indexOf("?") >= 0)
+    {
+        var query=location.href.split("?")[1];
+        var params=query.split("&");
+        for (var i = 0; i < params.length; i ++) {
+             value_pair=params[i].split("=");
+            if (value_pair[0] == name)
+                 return unescape(value_pair[1]);
+        }
+    }
+    return "";
+}
+function get_sip() {
+    var sip = get_param("sip");
+   //var sip = "172.21.144.65"; -----> if you need to static ip, write the ip here
+
+
+    if (sip.indexOf(":") < 0) { // IPv4 address
+        return sip;
+    } else {                    // IPv6 address
+        return '[' + sip + ']';
+    }
+}
+
+</script>
+
+<div class="container">
+    <div class="row align-self-center">
+        <div class="col-md-6 mx-auto text-center">
+            <div id="contactform">
+              <h3>Welcome to your Free Guest Wifi!.</h3>
+              <p>To continue please click connect below.</p>
+              <div class="col-md-12 text-center">
+                <script type="text/javascript">
+                document.write('<form method=POST action="http://' + get_sip() + ':9997/SubscriberPortal/hotspotlogin">');
+                document.write('<input type="hidden" name="url" value="'+get_param("url")+'" />');
+                document.write('<input type="hidden" name="proxy" value="'+get_param("proxy")+'" />');
+                document.write('<input type="hidden" name="uip" value="'+get_param("uip")+'" />');
+                document.write('<input type="hidden" name="client_mac" value="'+get_param("client_mac")+'" />');
+
+                </script>
+
+                <input type="hidden" id="username" name="username" value="GUESTUSERONLOCALDB" />
+                <input type="hidden" id="password" name="password" value="PASSWORD" />
+
+                  <button type="submit" id="submit" class="btn btn-primary btn-form">Give me internet!</button>
+
+
+
+              </div>
+
+
+
+              </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+  </body>
+</html>
